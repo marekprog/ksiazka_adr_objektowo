@@ -3,7 +3,7 @@
 
 AdresatManager::AdresatManager(string nazwaPlikuZAdresatami):plikZAdresatami(nazwaPlikuZAdresatami)
 {
-    idOstatniegoAdresata=0;
+    //idOstatniegoAdresata=0;
 }
 
 void AdresatManager::dodajAdresata(int idZalogowanegoUzytkownika)
@@ -33,8 +33,9 @@ Adresat AdresatManager::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
     adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajImie()));
 
     cout << "Podaj nazwisko: ";
-    adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
-    adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajNazwisko()));
+    //cin.ignore();
+    adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
+    adresat.ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajNazwisko()));
 
 
     cout << "Podaj numer telefonu: ";
@@ -76,4 +77,11 @@ void AdresatManager::wyswietlDaneAdresata(Adresat adresat)
     cout << "Email:              " << adresat.wczytajEmail() << endl;
     cout << "Adres:              " << adresat.wczytajAdres() << endl;
 }
+
+void AdresatManager::wczytajAdresatowZPliku(int idZalogowanegoUzytkownika)
+{
+    adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+}
+
+
 

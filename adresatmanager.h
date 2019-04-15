@@ -15,6 +15,7 @@ public:
     Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika);
     void wyswietlWszystkichAdresatow();
     void wyswietlDaneAdresata(Adresat adresat);
+    void wczytajAdresatowZPliku(int idZalogowanegoUzytkownika);
 
 };
 
