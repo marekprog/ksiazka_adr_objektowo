@@ -23,6 +23,8 @@ public:
     UzytkownikManager();
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void wczytajUzytkownikowZPliku();
+
 };
 
 #endif // UZYTKOWNIKMANAGER_H
