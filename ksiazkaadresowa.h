@@ -2,11 +2,13 @@
 #define KSIAZKAADRESOWA_H
 #include <iostream>
 #include "uzytkownikmanager.h"
+#include "adresatmanager.h"
 
 class KsiazkaAdresowa
 {
 
     UzytkownikManager uzytkownikManager;
+    AdresatManager adresatManager;
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami): uzytkownikManager(nazwaPlikuZUzytkownikami)
@@ -18,6 +20,8 @@ public:
     void logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
+    void dodajAdresata();
+
 
 };
 

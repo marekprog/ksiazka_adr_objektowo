@@ -22,4 +22,8 @@ void KsiazkaAdresowa::wylogowanieUzytkownika()
 {
     uzytkownikManager.wylogowanieUzytkownika();
 }
+void KsiazkaAdresowa::dodajAdresata()
+{
+    adresatManager.dodajAdresata(uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
+}
 
