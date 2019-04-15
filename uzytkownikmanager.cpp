@@ -68,4 +68,7 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
        cout<<uzytkownicy[i].pobierzHaslo()<<endl;
     }
 }
-
+void UzytkownikManager::wczytajUzytkownikowZPliku()
+{
+    uzytkownicy=plikZUzytkownikami.wczytajUzytkownikowZPliku();
+}
