@@ -1,9 +1,6 @@
 #include "uzytkownikmanager.h"
 
-UzytkownikManager::UzytkownikManager()
-{
 
-}
 
 void UzytkownikManager::rejestracjaUzytkownika()
 {
