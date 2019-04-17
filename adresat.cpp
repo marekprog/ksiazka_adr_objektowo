@@ -1,9 +1,9 @@
 #include "adresat.h"
 
-Adresat::Adresat()
-{
+//Adresat::Adresat()
+//{
 
-}
+//}
 void Adresat::ustawIdUzytkownika(int noweIdUzytkownika)
 {
     idUzytkownika=noweIdUzytkownika;

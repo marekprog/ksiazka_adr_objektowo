@@ -2,6 +2,7 @@
 
 UzytkownikManager::UzytkownikManager(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami)
 {
+    uzytkownicy=plikZUzytkownikami.wczytajUzytkownikowZPliku();
     idZalogowanegoUzytkownika=0;
 }
 
@@ -67,10 +68,6 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
        cout<<uzytkownicy[i].pobierzLogin()<<endl;
        cout<<uzytkownicy[i].pobierzHaslo()<<endl;
     }
-}
-void UzytkownikManager::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy=plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
 int UzytkownikManager::logowanieUzytkownika()
@@ -149,4 +146,14 @@ int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
 {
     return idZalogowanegoUzytkownika;
 }
+
+bool UzytkownikManager::czyUzytkownikJestZalogowany()
+{
+    if (idZalogowanegoUzytkownika>0)
+        return true;
+    else {
+        return false;
+    }
+}
+
 

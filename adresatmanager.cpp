@@ -1,31 +1,32 @@
 #include "adresatmanager.h"
 #include "metodypomocnicze.h"
 
-AdresatManager::AdresatManager(string nazwaPlikuZAdresatami):plikZAdresatami(nazwaPlikuZAdresatami)
-{
+//AdresatManager::AdresatManager(string nazwaPlikuZAdresatami):plikZAdresatami(nazwaPlikuZAdresatami)
+//{
     //idOstatniegoAdresata=0;
-}
+//}
 
-void AdresatManager::dodajAdresata(int idZalogowanegoUzytkownika)
+void AdresatManager::dodajAdresata()
 {
     Adresat adresat;
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
+    adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
-
-   idOstatniegoAdresata++;
+    if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+        cout<<"Nowy Adresat zostal dodany "<<endl;
+    else
+        cout<<"Blad. Nie udalo sie dodac nowego adresata do pliku."<<endl;
 }
 
-Adresat AdresatManager::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
+Adresat AdresatManager::podajDaneNowegoAdresata()
 {
     Adresat adresat;
 
-    adresat.ustawId(++idOstatniegoAdresata);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+    adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie : ";
     cin.ignore();//musialem to dodac!

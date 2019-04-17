@@ -1,12 +1,15 @@
 #include "plikzadresatami.h"
 
-PlikZAdresatami::PlikZAdresatami(string NAZWAPLIKUZADRESATAMI):nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI){}
+PlikZAdresatami::PlikZAdresatami(string NAZWAPLIKUZADRESATAMI):NAZWA_PLIKU_Z_ADRESATAMI(NAZWAPLIKUZADRESATAMI)
+{
+    idOstatniegoAdresata=0;
+}
 
-void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
+bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
         //fstream plikTekstowy;
-        plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
+        plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
         if (plikTekstowy.good() == true)
         {
@@ -21,12 +24,10 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
                 plikTekstowy << endl << liniaZDanymiAdresata ;
             }
             plikTekstowy.close();
+            return true;
         }
         else
-        {
-            cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
-        }
-        system("pause");
+        return false;
 }
 
 string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(Adresat adresat)
@@ -62,7 +63,7 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -157,6 +158,10 @@ string PlikZAdresatami::pobierzLiczbe(string tekst, int pozycjaZnaku)
         pozycjaZnaku ++;
     }
     return liczba;
+}
+int PlikZAdresatami::pobierzIdOstatniegoAdresata()
+{
+    return idOstatniegoAdresata;
 }
 
 
