@@ -47,6 +47,9 @@ int main()
                 break;
             }
         }
+        else {
+
+
             wybor = wybierzOpcjeZMenuUzytkownika();
 
             switch (wybor)
@@ -80,6 +83,7 @@ int main()
                // adresaci.clear();
                 break;
             }
+          }
     }
     return 0;
 }
