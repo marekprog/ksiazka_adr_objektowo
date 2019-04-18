@@ -24,12 +24,13 @@ void AdresatManager::dodajAdresata()
 Adresat AdresatManager::podajDaneNowegoAdresata()
 {
     Adresat adresat;
-
     adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    plikZAdresatami.wczytajIdOstatniegoAdresata(adresat.wczytajId());
 
+    //cin.ignore();//musialem to dodac!
     cout << "Podaj imie : ";
-    cin.ignore();//musialem to dodac!
+
     adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
     adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajImie()));
 

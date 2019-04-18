@@ -13,7 +13,7 @@ class PlikZAdresatami
     string NAZWA_PLIKU_Z_ADRESATAMI;
     int idOstatniegoAdresata;
     fstream plikTekstowy;
-    bool czyPlikJestPusty();
+    bool czyPlikJestPusty(fstream &plikTekstowy);
     string zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(Adresat adresat);
 public:
     PlikZAdresatami(string NAZWAPLIKUZADRESATAMI);
@@ -24,6 +24,7 @@ public:
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     string pobierzLiczbe(string tekst, int pozycjaZnaku);
     int pobierzIdOstatniegoAdresata();
+    void wczytajIdOstatniegoAdresata(int Id);
 
 
 

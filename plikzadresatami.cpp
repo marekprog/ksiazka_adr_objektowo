@@ -15,7 +15,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
         {
             liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
 
-            if (czyPlikJestPusty() == true)
+            if (czyPlikJestPusty(plikTekstowy) == true)
             {
                 plikTekstowy << liniaZDanymiAdresata;
             }
@@ -45,9 +45,9 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKresk
     return liniaZDanymiAdresata;
 }
 
-bool PlikZAdresatami::czyPlikJestPusty()
+bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
 {
-    fstream plikTekstowy;
+    //fstream plikTekstowy;
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0)
         return true;
@@ -59,7 +59,7 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
 {
     Adresat adresat;
     vector<Adresat> adresaci;
-    int idOstatniegoAdresata = 0;
+    //int idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -165,3 +165,7 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata()
 }
 
 
+void PlikZAdresatami::wczytajIdOstatniegoAdresata(int Id)
+{
+    idOstatniegoAdresata=Id;
+}
