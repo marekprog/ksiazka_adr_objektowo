@@ -58,14 +58,13 @@ int main()
                 ksiazkaAdresowa.dodajAdresata();
                 break;
             case '2':
-              //  wyszukajAdresatowPoImieniu(adresaci);
+                ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
                 break;
             case '3':
-               // wyszukajAdresatowPoNazwisku(adresaci);
+                ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
                 break;
             case '4':
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-              //  wyswietlWszystkichAdresatow(adresaci);
                 break;
             case '5':
                // idUsunietegoAdresata = usunAdresata(adresaci);
@@ -79,8 +78,6 @@ int main()
                 break;
             case '8':
                 ksiazkaAdresowa.wylogowanieUzytkownika();
-               // idZalogowanegoUzytkownika = 0;
-               // adresaci.clear();
                 break;
             }
           }

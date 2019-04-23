@@ -21,6 +21,10 @@ public:
     void wyswietlWszystkichAdresatow();
     void wyswietlDaneAdresata(Adresat adresat);
     void wczytajAdresatowZPliku(int idZalogowanegoUzytkownika);
+    void wyszukajAdresatowPoImieniu();
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+    void wyszukajAdresatowPoNazwisku();
+
 
 };
 
