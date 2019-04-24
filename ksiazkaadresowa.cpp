@@ -10,14 +10,15 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 {
     uzytkownikManager.wypiszWszystkichUzytkownikow();
 }
-int KsiazkaAdresowa::logowanieUzytkownika()
+void KsiazkaAdresowa::logowanieUzytkownika()
 {
-    int loginId=uzytkownikManager.logowanieUzytkownika();
+    //int loginId=
+    uzytkownikManager.logowanieUzytkownika();
     if(uzytkownikManager.czyUzytkownikJestZalogowany())
     {
         adresatManager= new AdresatManager(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
     }
-    return loginId;
+    //return 0;//loginId;
 
 }
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()

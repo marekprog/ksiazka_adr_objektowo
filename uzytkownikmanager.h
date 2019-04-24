@@ -23,7 +23,7 @@ public:
     UzytkownikManager(string nazwaPlikuZUzytkownikami);//:plikZUzytkownikami(nazwaPlikuZUzytkownikami);
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    int logowanieUzytkownika();
+    void logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
     int pobierzIdZalogowanegoUzytkownika();

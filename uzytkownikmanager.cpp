@@ -70,7 +70,7 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
     }
 }
 
-int UzytkownikManager::logowanieUzytkownika()
+void UzytkownikManager::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
@@ -92,19 +92,18 @@ int UzytkownikManager::logowanieUzytkownika()
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    return idZalogowanegoUzytkownika= itr -> pobierzId();
+                    idZalogowanegoUzytkownika= itr -> pobierzId();
+                    break;
 
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return 0;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
-    return 0;
 }
 
 void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
