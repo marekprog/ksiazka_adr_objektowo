@@ -67,14 +67,16 @@ int main()
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
             case '5':
-               // idUsunietegoAdresata = usunAdresata(adresaci);
+                //int idUsunietegoAdresata =
+                ksiazkaAdresowa.usunAdresata();
               //  idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
                 break;
             case '6':
+                ksiazkaAdresowa.edytujAdresata();
                // edytujAdresata(adresaci);
                 break;
             case '7':
-              //  zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+                ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
                 break;
             case '8':
                 ksiazkaAdresowa.wylogowanieUzytkownika();
