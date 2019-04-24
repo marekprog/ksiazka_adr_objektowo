@@ -16,7 +16,7 @@ public:
         uzytkownikManager(NAZWAPLIKUZUZYTKOWNIKAMI),NAZWA_PLIKU_Z_ADRESATAMI(NAZWAPLIKUZADRESATAMI)
     {
         adresatManager=NULL;
-    };
+    }
     ~KsiazkaAdresowa()
     {
         delete adresatManager;

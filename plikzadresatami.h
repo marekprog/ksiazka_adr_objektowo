@@ -6,14 +6,14 @@
 #include "metodypomocnicze.h"
 #include <cstdlib>
 #include "adresat.h"
+#include "pliktekstowy.h"
 
 
-class PlikZAdresatami
+class PlikZAdresatami : public PlikTekstowy
 {
     string NAZWA_PLIKU_Z_ADRESATAMI;
     int idOstatniegoAdresata;
-    fstream plikTekstowy;
-    bool czyPlikJestPusty(fstream &plikTekstowy);
+    //fstream plikTekstowy;
     string zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(Adresat adresat);
 public:
     PlikZAdresatami(string NAZWAPLIKUZADRESATAMI);

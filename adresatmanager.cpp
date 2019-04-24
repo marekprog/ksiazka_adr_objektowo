@@ -1,10 +1,6 @@
 #include "adresatmanager.h"
 #include "metodypomocnicze.h"
 
-//AdresatManager::AdresatManager(string nazwaPlikuZAdresatami):plikZAdresatami(nazwaPlikuZAdresatami)
-//{
-    //idOstatniegoAdresata=0;
-//}
 
 void AdresatManager::dodajAdresata()
 {
@@ -28,14 +24,12 @@ Adresat AdresatManager::podajDaneNowegoAdresata()
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     plikZAdresatami.wczytajIdOstatniegoAdresata(adresat.wczytajId());
 
-    //cin.ignore();//musialem to dodac!
     cout << "Podaj imie : ";
 
     adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
     adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajImie()));
 
     cout << "Podaj nazwisko: ";
-    //cin.ignore();
     adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
     adresat.ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.wczytajNazwisko()));
 
@@ -169,7 +163,6 @@ int AdresatManager::podajIdWybranegoAdresata()
 int AdresatManager::usunAdresata()
 {
     int idUsuwanegoAdresata = 0;
-    int numerLiniiUsuwanegoAdresata = 0;
 
     system("cls");
     cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
@@ -187,8 +180,6 @@ int AdresatManager::usunAdresata()
             znak = MetodyPomocnicze::wczytajZnak();
             if (znak == 't')
             {
-                //numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
-                //usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);
                 plikZAdresatami.usunAdresataZPliku(idUsuwanegoAdresata);
                 adresaci.erase(itr);
                 cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
@@ -216,7 +207,6 @@ void AdresatManager::edytujAdresata()
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
-    int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
 
     cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;
@@ -298,13 +288,7 @@ char AdresatManager::wybierzOpcjeZMenuEdycja()
 
 void AdresatManager::zaktualizujDaneEdytowanegoAdresata(Adresat adresat)
 {
-    int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
-
     plikZAdresatami.edytujAdresataWPliku(adresat);
-    //numerLiniiEdytowanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idEdytowanegoAdresata);
-    //liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
-    //edytujWybranaLinieWPliku(numerLiniiEdytowanegoAdresata, liniaZDanymiAdresata);
-
     cout << endl << "Dane zostaly zaktualizowane." << endl << endl;
 }

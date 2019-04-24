@@ -8,7 +8,6 @@ class AdresatManager
 {
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     vector<Adresat> adresaci;
-    //int idOstatniegoAdresata;
     PlikZAdresatami plikZAdresatami;
 public:
     AdresatManager(string nazwaPlikuZAdresatami,int idZalogowanegoUzytkownika)
