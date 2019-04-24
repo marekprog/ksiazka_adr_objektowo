@@ -8,7 +8,6 @@ PlikZAdresatami::PlikZAdresatami(string NAZWAPLIKUZADRESATAMI):NAZWA_PLIKU_Z_ADR
 bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
-        //fstream plikTekstowy;
         plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
         if (plikTekstowy.good() == true)
@@ -45,21 +44,10 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKresk
     return liniaZDanymiAdresata;
 }
 
-bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
-{
-    //fstream plikTekstowy;
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
-        return true;
-    else
-        return false;
-}
-
 vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
     vector<Adresat> adresaci;
-    //int idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -169,3 +157,87 @@ void PlikZAdresatami::wczytajIdOstatniegoAdresata(int Id)
 {
     idOstatniegoAdresata=Id;
 }
+
+void PlikZAdresatami::usunAdresataZPliku(int idAdresata)
+{
+    int numerLiniiWPlikuTekstowym = 1;
+    int numerUsuwanejLinii =0;
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    fstream plikTekstowy,tymczasowyPlikTekstowy;
+    string nazwaTymczasowegoPlikuZAdresatami="temp.txt";
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
+
+    if (plikTekstowy.good() == true && idAdresata != 0)
+    {
+        while(getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
+        {
+            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+            {
+                tymczasowyPlikTekstowy<<"";
+                numerUsuwanejLinii=numerLiniiWPlikuTekstowym;
+            }
+            else if(numerLiniiWPlikuTekstowym==1)
+                tymczasowyPlikTekstowy <<daneJednegoAdresataOddzielonePionowymiKreskami;
+            else if (numerUsuwanejLinii==numerLiniiWPlikuTekstowym && numerLiniiWPlikuTekstowym==2)
+                tymczasowyPlikTekstowy <<daneJednegoAdresataOddzielonePionowymiKreskami;
+            else
+                tymczasowyPlikTekstowy<<endl<<daneJednegoAdresataOddzielonePionowymiKreskami;
+
+          numerLiniiWPlikuTekstowym++;
+          numerUsuwanejLinii++;
+                }
+
+        plikTekstowy.close();
+        tymczasowyPlikTekstowy.close();
+        MetodyPomocnicze::usunOdczytywanyPlik(NAZWA_PLIKU_Z_ADRESATAMI);
+        MetodyPomocnicze::zmienNazweTymczasowegoPlikuNaNazweOdczytywanegoPliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU_Z_ADRESATAMI);
+
+    }
+}
+
+void PlikZAdresatami::edytujAdresataWPliku(Adresat adresat)
+{
+    bool czyIstniejeAdresat = false;
+    int numerLiniiWPlikuTekstowym = 1;
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    fstream plikTekstowy,tymczasowyPlikTekstowy;
+    string nazwaTymczasowegoPlikuZAdresatami="temp.txt";
+
+
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
+
+    if (plikTekstowy.good() == true && adresat.wczytajId() != 0)
+    {
+        while(getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
+        {
+            if(adresat.wczytajId() == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami)&&numerLiniiWPlikuTekstowym==1)
+            {
+                czyIstniejeAdresat = true;
+                tymczasowyPlikTekstowy << zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
+            }
+            else if(adresat.wczytajId() == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami)&&numerLiniiWPlikuTekstowym>1)
+            {
+                czyIstniejeAdresat = true;
+                tymczasowyPlikTekstowy <<endl<< zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
+            }
+            else if(numerLiniiWPlikuTekstowym==1)
+                tymczasowyPlikTekstowy <<daneJednegoAdresataOddzielonePionowymiKreskami;
+            else if(numerLiniiWPlikuTekstowym>1)
+                tymczasowyPlikTekstowy <<endl<<daneJednegoAdresataOddzielonePionowymiKreskami;
+
+         numerLiniiWPlikuTekstowym++;
+        }
+        if (czyIstniejeAdresat = false)
+        {
+            plikTekstowy.close();
+        }
+        plikTekstowy.close();
+        tymczasowyPlikTekstowy.close();
+
+        MetodyPomocnicze::usunOdczytywanyPlik(NAZWA_PLIKU_Z_ADRESATAMI);
+        MetodyPomocnicze::zmienNazweTymczasowegoPlikuNaNazweOdczytywanegoPliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU_Z_ADRESATAMI);
+    }
+}
+

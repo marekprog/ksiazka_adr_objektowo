@@ -48,3 +48,24 @@ bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
 {
     return uzytkownikManager.czyUzytkownikJestZalogowany();
 }
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu()
+{
+    adresatManager->wyszukajAdresatowPoImieniu();
+}
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku()
+{
+    adresatManager->wyszukajAdresatowPoNazwisku();
+}
+int KsiazkaAdresowa::usunAdresata()
+{
+    adresatManager->usunAdresata();
+
+}
+void KsiazkaAdresowa::edytujAdresata()
+{
+    adresatManager->edytujAdresata();
+}
+
+
+
+

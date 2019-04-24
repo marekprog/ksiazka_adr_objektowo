@@ -122,7 +122,7 @@ void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
             system("pause");
         }
     }
-    //zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
 void UzytkownikManager::wylogowanieUzytkownika()

@@ -23,7 +23,6 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownik.txt","Adresat.txt");
    char wybor;
-   //int idZalogowanegoUzytkownika;
    while(true)
    {
 
@@ -58,29 +57,25 @@ int main()
                 ksiazkaAdresowa.dodajAdresata();
                 break;
             case '2':
-              //  wyszukajAdresatowPoImieniu(adresaci);
+                ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
                 break;
             case '3':
-               // wyszukajAdresatowPoNazwisku(adresaci);
+                ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
                 break;
             case '4':
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-              //  wyswietlWszystkichAdresatow(adresaci);
                 break;
             case '5':
-               // idUsunietegoAdresata = usunAdresata(adresaci);
-              //  idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
+                ksiazkaAdresowa.usunAdresata();
                 break;
             case '6':
-               // edytujAdresata(adresaci);
+                ksiazkaAdresowa.edytujAdresata();
                 break;
             case '7':
-              //  zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+                ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
                 break;
             case '8':
                 ksiazkaAdresowa.wylogowanieUzytkownika();
-               // idZalogowanegoUzytkownika = 0;
-               // adresaci.clear();
                 break;
             }
           }
