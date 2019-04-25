@@ -14,9 +14,5 @@ class PlikTekstowy
 protected:
     fstream plikTekstowy;
     bool czyPlikJestPusty(fstream &plikTekstowy);
-
-public:
-    PlikTekstowy();
 };
-
 #endif // PLIKTEKSTOWY_H

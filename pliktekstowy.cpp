@@ -1,9 +1,6 @@
 #include "pliktekstowy.h"
 
-PlikTekstowy::PlikTekstowy()
-{
 
-}
 bool PlikTekstowy::czyPlikJestPusty(fstream &plikTekstowy)
 {
     plikTekstowy.seekg(0, ios::end);
