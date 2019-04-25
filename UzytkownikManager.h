@@ -2,10 +2,10 @@
 #define UZYTKOWNIKMANAGER_H
 #include <iostream>
 #include <vector>
-#include "uzytkownik.h"
+#include "Uzytkownik.h"
 #include <fstream>
 #include <sstream>
-#include "plikzuzytkownikami.h"
+#include "PlikZUzytkownikami.h"
 
 class UzytkownikManager
 {

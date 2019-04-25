@@ -1,4 +1,4 @@
-#include "metodypomocnicze.h"
+#include "MetodyPomocnicze.h"
 
 
 MetodyPomocnicze::MetodyPomocnicze()

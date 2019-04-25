@@ -1,4 +1,4 @@
-#include "pliktekstowy.h"
+#include "PlikTekstowy.h"
 
 
 bool PlikTekstowy::czyPlikJestPusty(fstream &plikTekstowy)

@@ -3,9 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "metodypomocnicze.h"
+#include "MetodyPomocnicze.h"
 #include <cstdlib>
-#include "adresat.h"
+#include "Adresat.h"
 
 
 class PlikTekstowy

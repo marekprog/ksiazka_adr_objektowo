@@ -3,10 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "uzytkownik.h"
-#include "metodypomocnicze.h"
+#include "Uzytkownik.h"
+#include "MetodyPomocnicze.h"
 #include <cstdlib>
-#include "pliktekstowy.h"
+#include "PlikTekstowy.h"
 
 class PlikZUzytkownikami : public PlikTekstowy
 {

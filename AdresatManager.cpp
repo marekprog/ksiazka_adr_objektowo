@@ -1,5 +1,5 @@
-#include "adresatmanager.h"
-#include "metodypomocnicze.h"
+#include "AdresatManager.h"
+#include "MetodyPomocnicze.h"
 
 
 void AdresatManager::dodajAdresata()

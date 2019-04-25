@@ -3,10 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "metodypomocnicze.h"
+#include "MetodyPomocnicze.h"
 #include <cstdlib>
-#include "adresat.h"
-#include "pliktekstowy.h"
+#include "Adresat.h"
+#include "PlikTekstowy.h"
 
 
 class PlikZAdresatami : public PlikTekstowy

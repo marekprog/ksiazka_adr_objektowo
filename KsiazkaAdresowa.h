@@ -1,8 +1,8 @@
 #ifndef KSIAZKAADRESOWA_H
 #define KSIAZKAADRESOWA_H
 #include <iostream>
-#include "uzytkownikmanager.h"
-#include "adresatmanager.h"
+#include "UzytkownikManager.h"
+#include "AdresatManager.h"
 
 class KsiazkaAdresowa
 {

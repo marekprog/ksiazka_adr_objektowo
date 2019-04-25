@@ -1,4 +1,4 @@
-#include "plikzadresatami.h"
+#include "PlikZAdresatami.h"
 
 PlikZAdresatami::PlikZAdresatami(string NAZWAPLIKUZADRESATAMI):NAZWA_PLIKU_Z_ADRESATAMI(NAZWAPLIKUZADRESATAMI)
 {

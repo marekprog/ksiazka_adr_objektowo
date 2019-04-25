@@ -1,4 +1,4 @@
-#include "uzytkownik.h"
+#include "Uzytkownik.h"
 
 Uzytkownik::Uzytkownik()
 {

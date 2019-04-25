@@ -1,4 +1,4 @@
-#include "uzytkownikmanager.h"
+#include "UzytkownikManager.h"
 
 UzytkownikManager::UzytkownikManager(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami)
 {

@@ -1,7 +1,7 @@
 #ifndef ADRESATMANAGER_H
 #define ADRESATMANAGER_H
-#include "adresat.h"
-#include "plikzadresatami.h"
+#include "Adresat.h"
+#include "PlikZAdresatami.h"
 #include <vector>
 
 class AdresatManager
