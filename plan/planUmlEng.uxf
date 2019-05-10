@@ -8,26 +8,26 @@
       <w>462</w>
       <h>186</h>
     </coordinates>
-    <panel_attributes>Ksiazka Adresowa
+    <panel_attributes>AddressBook
 --
-uzytkownikMenager:UzytkownikManager
-adresatManager:AdresatManager
-NAZWA_PLIKU_Z_ADRESATAMI: const String
+userManager:UserManager
+recipientManager:RecipientManager
+RECIPIENTS_FILE_NAME: const String
 --
-KsiazkaAdresowa():
-+ rejestracjaUzytkownika():void
-+ wypiszWszystkichUzytkownikow():void
-+ logowanieUzytkownika():void
-+ zmianaHaslaZalogowanegoUzytkownika():void
-+ wylogowanieUzytkownika():void
-+ dodajAdresata():void
-+ wyswietlWszystkichAdresatow():void
-+ wczytajAdresatowZPliku():void
-+ czyUzytkownikJestZalogowany():Bool
-+ wyszukajAdresatowPoImieniu():void
-+ wyszukajAdresatowPoNazwisku():void
-+ edytujAdresata():void
-+ usunAdresata():int</panel_attributes>
+AddressBook():
++ userRegistration():void
++ printAllUsers():void
++ userLogin():void
++ changePasswordOfLoggedUser():void
++ userLogout():void
++ addRecipient():void
++ printAllRecipients():void
++ readRecipientsFromFile():void
++ isUserLogged():Bool
++ findRecipientsByName():void
++ findRecipientsBySurname():void
++ editRecipient():void
++ deleteRecipient():int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -38,11 +38,11 @@ KsiazkaAdresowa():
       <w>198</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>Uzytkownik
+    <panel_attributes>User
 --
 - id:Integer
 - login:String
-- haslo:String
+- password:String
 
 </panel_attributes>
     <additional_attributes/>
@@ -55,16 +55,16 @@ KsiazkaAdresowa():
       <w>468</w>
       <h>96</h>
     </coordinates>
-    <panel_attributes>PlikZUzytkownikami
+    <panel_attributes>UsersFile
 --
-- NAZWA_PLIKU_Z_UZYTKOWNIKAMI: const String
+- USERS_FILE_NAME: const String
 --
-+ PlikZUzytkownikami(string nazwaPlikuZUzytkownikami)
-- zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik):String
-- pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami):Uzytkownik
-+ dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik): void
-+ wczytajUzytkownikowZPliku():vector&lt;Uzytkownik&gt;
-+ zapiszWszystkichUzytkownikowDoPliku(vector &lt;Uzytkownik&gt; &amp;uzytkownicy):void</panel_attributes>
++ UsersFile(string usersFileName)
+- changeUserDataToLinesSeparatedWithVerticalLines(User user):String
+- getUserData(string singleUserDataSeparatedWithVerticalLines):User
++ addUserToFile(User user): void
++ readUsersFromFile():vector&lt;User&gt;
++ saveAllUsersToFile(vector &lt;User&gt; &amp;users):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -75,23 +75,23 @@ KsiazkaAdresowa():
       <w>252</w>
       <h>192</h>
     </coordinates>
-    <panel_attributes>UzytkownikManager
+    <panel_attributes>UserManager
 --
-- idZalogowanegoUzytkownika: Integer
-- uzytkownicy:vector&lt;Uzytkownik&gt;
-- plikZUzytkownikami:PlikZUzytkownikami
+- loggedUserId: Integer
+- users:vector&lt;User&gt;
+- fileWithUsers:FileWithUsers
 --
-+ UzytkownikManager(string nazwaPlikuZUzytkownikami)
-+ rejestracjaUzytkownika():void
-+ logowanieUzytkownika():Integer
-+ wypiszWszystkichUzytkownikow():void
-- podajDaneNowegoUzytkownika():Uzytkownik
-- pobierzIdNowegoUzytkownika(): Integer
-- czyIstniejeLogin(string login): Bool
-+ zmianaHaslaZalogowanegoUzytkownika():void
-+ wylogowanieUzytkownika():void
-+ pobierzIdZalogowanegoUzytkownika():Integer
-+ czyUzytkownikJestZalogowany(): Bool
++ UserManager(string usersFileName)
++ userRegistration():void
++ userLogin():Integer
++ printAllUsers():void
+- getNewUserData():User
+- getNewUserId(): Integer
+- loginExists(string login): Bool
++ changeLoggedUserPassword():void
++ logoutUser():void
++ getLoggedUserId():Integer
++ isUserLogged(): Bool
 
 
 </panel_attributes>
@@ -105,18 +105,18 @@ KsiazkaAdresowa():
       <w>306</w>
       <h>96</h>
     </coordinates>
-    <panel_attributes>MetodyPomocnicze
+    <panel_attributes>Utils
 --
 --
 
-+ konwersjaIntNaString(int liczba): String
-+ konwersjaStringNaInt(string text):Integer
-+ wczytajLinie():String
-+ zamienPierwszaLitereNaDuzaAPozostaleNaMale(string text):String
-+ wczytajZnak(): Char
-+ wczytajLiczbeCalkowita(): Integer
-+ usunOdczytywanyPlik(string nazwaPlikuZRozszerzeniem): void
-+ zmienNazweTymczasowegoPlikuNaNazweOdczytywanegoPliku(string nazwaTymczasowegoPlikuZRozszerzeniem, string nazwaPlikuZRozszerzeniem):void 
++ IntToString(int number): String
++ StringToInt(string text):Integer
++ readLine():String
++ capitalizeFirstLetter(string text):String
++ readCharacter(): Char
++ readInteger(): Integer
++ deleteReadFile(string fileNameWExtention): void
++ changeTempFileNameToReadFileName(string tempFileNameWExtension, string fileNameWExtention):void 
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -128,15 +128,15 @@ KsiazkaAdresowa():
       <w>252</w>
       <h>102</h>
     </coordinates>
-    <panel_attributes>Adresat
+    <panel_attributes>Recipient
 --
 -id:Integer
--idUzytkownika:Integer
--imie:String
--nazwisko:String
--numerTelefonu:String
+-recipientId:Integer
+-name:String
+-surname:String
+-telephoneNumber:String
 -email:String
--adres:String
+-address:String
 
 
 </panel_attributes>
@@ -150,25 +150,25 @@ KsiazkaAdresowa():
       <w>318</w>
       <h>198</h>
     </coordinates>
-    <panel_attributes>AdresatManager
+    <panel_attributes>RecipientManager
 --
--ID_ZALOGOWANEGO_UZYTKOWNIKA:const Integer
--adresaci:vector&lt;Adresat&gt;
--PLikZAdresatami:plikZAdresatami
+-LOGGED_USER_ID:const Integer
+-recipients:vector&lt;Recipient&gt;
+-RecipientsFile:recipientsFile
 --
-+ dodajAdresata():void
-+ podajDaneNowegoAdresata():Adresat
-+ wyswietlWszystkichAdresatow():void
-+ wyswietlDaneAdresata(Adresat adresat):void
-+ wczytajAdresatowZPliku(int idZalogowanegoUzytkownika):void
-+ wyszukajAdresatowPoImieniu():void
-+ wyswietlIloscWyszukanychAdresatow(int iloscAdresatow):void
-+ wyszukajAdresatowPoNazwisku():void
-+ usunAdresata(): Integer
-+ podajIdWybranegoAdresata(): Integer
-+ edytujAdresata():void
-+ wybierzOpcjeZMenuEdycja():char
-+ zaktualizujDaneEdytowanegoAdresata(Adresat adresat):void</panel_attributes>
++ addRecipient():void
++ insertNewRecipientData():Adresat
++ printAllRecipients():void
++ printRecipientData(Recipient recipient):void
++ readRecipientsFromFile(int loggedUserId):void
++ findRecipientsByName():void
++ printNumberOfSearchedRecipients(int numberOfRecipients):void
++ findRecipientsBySurname():void
++ removeRecipient(): Integer
++ insertSelectedRecipiendId(): Integer
++ editRecipient():void
++ selectOptionsFromEditMenu():char
++ updateEditedRecipientData(Recipient recipient):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -179,23 +179,23 @@ KsiazkaAdresowa():
       <w>600</w>
       <h>168</h>
     </coordinates>
-    <panel_attributes>PlikZAdresatami
+    <panel_attributes>RecipientsFile
 --
--NAZWA_PLIKU_Z_ADRESATAMI:const String
--idOstatniegoAdresata: Integer
+-RECIPIENTS_FILE_NAME:const String
+-lastRecipientId: Integer
 --
-+ PlikzAdresatami
-+ dopiszAdresataDoPliku():Bool
-- zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat):String
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika):vector&lt;Adresat&gt;
-+ pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami):int
-+ pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami):Adresat
-+ pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami):int
-+ pobierzLiczbe(string tekst, int pozycjaZnaku):String
-+ pobierzIdOstatniegoAdresata(): Integer
-+ wczytajIdOstatniegoAdresata(int Id):void
-+ usunAdresataZPliku(int idAdresata):void
-+ edytujAdresataWPliku(Adresat adresat):void</panel_attributes>
++ RecipientsFile
++ addRecipientToFile():Bool
+- changeRecipientDataToLinesSeparatedWithVerticalLines(recipient):String
++ readRecipientOfLoggedUserFromFile(int loggedUserId):vector&lt;Recipient&gt;
++ getUserIdFromDataSeparatedWithVerticalLines(string oneRecipientDataSeparatedWithVerticalLines):int
++ getRecipientData(string userDataSeparatedWithVerticalLines):Recipient
++ getRecipientIdFromDataSeparatedWithVerticalLines(string oneRecipientDataSeparatedWithVerticalLines):int
++ getNumber(string text, int characterPosition):String
++ getLastRecipientId(): Integer
++ readLastRecipientId(int Id):void
++ removeRecipientFromFile(int recipientId):void
++ editRecipientInFile(Recipient recipient):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -206,12 +206,12 @@ KsiazkaAdresowa():
       <w>228</w>
       <h>54</h>
     </coordinates>
-    <panel_attributes>PlikTekstowy
+    <panel_attributes>TextFile
 --
-- NAZWA_PLIKU:const String
-# plikTekstowy:fstream
+- FILE_NAME:const String
+# textFile:fstream
 --
-# czyPlikJestPusty(fstream &amp;plikTekstowy):Bool</panel_attributes>
+# isEmpty(fstream &amp;textFile):Bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
